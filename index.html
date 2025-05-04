@@ -2,29 +2,75 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>Para o Melhor Pai</title>
+  <title>Melhor Pai do Mundo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    .tela {
+      display: none;
+    }
+    .ativa {
+      display: block;
+    }
+    button, .heart {
+      margin-top: 20px;
+      font-size: 18px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    .heart {
+      background: none;
+      border: none;
+      font-size: 32px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Sabe quem é o melhor pai do mundo?</h1>
 
-  <a href="#sim">Sim</a> | <a href="#nao">Não</a>
+  <!-- Tela 1: Pergunta -->
+  <div id="tela1" class="tela ativa">
+    <h1>Sabe quem é o melhor pai do mundo?</h1>
+    <button onclick="responder('sim')">Sim</button>
+    <button onclick="responder('nao')">Não</button>
+  </div>
 
-  <!-- Seção SIM -->
-  <div id="sim">
+  <!-- Tela 2: Resposta "Sim" -->
+  <div id="tela-sim" class="tela">
     <h2>Claro que sabes! És tu! 💙</h2>
-    <a href="#mensagem">❤️</a>
+    <button class="heart" onclick="mostrarMensagem()">❤️</button>
   </div>
 
-  <!-- Seção NÃO -->
-  <div id="nao">
+  <!-- Tela 3: Resposta "Não" -->
+  <div id="tela-nao" class="tela">
     <h2>Não sabes? És tu! 💙</h2>
-    <a href="#mensagem">❤️</a>
+    <button class="heart" onclick="mostrarMensagem()">❤️</button>
   </div>
 
-  <!-- Mensagem final -->
-  <div id="mensagem">
+  <!-- Tela 4: Mensagem final -->
+  <div id="mensagem-final" class="tela">
     <h2>Eu sei que tu sempre te esforçaste por mim</h2>
     <p>Muito obrigada 💖</p>
   </div>
+
+  <script>
+    function responder(opcao) {
+      document.getElementById("tela1").classList.remove("ativa");
+      if (opcao === "sim") {
+        document.getElementById("tela-sim").classList.add("ativa");
+      } else {
+        document.getElementById("tela-nao").classList.add("ativa");
+      }
+    }
+
+    function mostrarMensagem() {
+      document.getElementById("tela-sim").classList.remove("ativa");
+      document.getElementById("tela-nao").classList.remove("ativa");
+      document.getElementById("mensagem-final").classList.add("ativa");
+    }
+  </script>
+
 </body>
 </html>
